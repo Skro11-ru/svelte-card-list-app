@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "dayjs": "^1.11.4"
+    "dayjs": "^1.11.4",
+    "node-sass": "^7.0.1",
+    "svelte-cleavejs": "^1.0.3"
   }
 }

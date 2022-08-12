@@ -10,10 +10,20 @@
 
 /* Mixin that can be used to create a shadow. */
 @mixin shadow {
-  box-shadow: 5px 5px 10px rgb(0 0 0 / 0.5);
+  @include transition();
+
+  box-shadow: 5px 5px 10px rgb(0 0 0 / 0.2);
 }
 
 /* Mixin that can be used to create a transition. */
 @mixin transition {
   transition: all 0.3s linear;
 }
+
+@mixin border($radius:0) {
+  border: 1px solid $color-rhythm;
+  @if($radius){
+    border-radius: $radius;
+  }
+}
+
