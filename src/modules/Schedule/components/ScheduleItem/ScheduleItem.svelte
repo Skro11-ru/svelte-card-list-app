@@ -1,4 +1,5 @@
 <div class="card">
+  <ScheduleSummary item='{item}'/>
   <div class="card__row">
     <h3 class="card__title">Дни недели</h3>
     {#each Array(7) as _, i}
@@ -44,6 +45,7 @@
 
   import ButtonSelectDayWeek from '@/modules/Schedule/components/ButtonSelectDayWeek/ButtonSelectDayWeek.svelte';
   import dayjs from 'dayjs';
+  import ScheduleSummary from '@/modules/Schedule/components/ScheduleItem/ScheduleSummary.svelte';
 
   //Props
   export let item;
@@ -54,8 +56,8 @@
   const breakStartTime = item?.off_fr ? item?.off_fr : '0000';
   const breakEndTime = item?.off_to ? item?.off_to : '0000';
 
-  const workStartTime = item?.tm_fr ? item?.tm_fr : '0800';
-  const workEndTime = item?.tm_to ? item?.tm_to : '1700';
+  const workStartTime = item?.tm_fr ? item?.tm_fr : '1000';
+  const workEndTime = item?.tm_to ? item?.tm_to : '1800';
 
   // Functions
   /* It checks if the day is a business day. */

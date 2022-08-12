@@ -14,8 +14,6 @@
 <style lang="scss">
   .schedule-list {
     &__item {
-      border: 1px solid $color-rhythm;
-
       padding: 10px;
       @include border(5px);
       &:not(:last-child) {
