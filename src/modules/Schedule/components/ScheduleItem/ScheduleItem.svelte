@@ -2,13 +2,17 @@
   <ScheduleSummary item="{item}" />
   <div class="card__row">
     <h3 class="card__title">Дни недели</h3>
-    {#each Array(7) as _, i}
-      <ButtonSelectDayWeek
-        on:updateValue="{selectEventHandler}"
-        isWorkingDay="{checkOnWorkingDay(i + 1)}"
-        dayWeek="{getDayWeek(i + 1)}"
-      />
-    {/each}
+    <ul class="card__buttons-list">
+      {#each Array(7) as _, i}
+        <li class="card__buttons-item">
+          <ButtonSelectDayWeek
+            on:updateValue="{selectEventHandler}"
+            isWorkingDay="{checkOnWorkingDay(i + 1)}"
+            dayWeek="{getDayWeek(i + 1)}"
+          />
+        </li>
+      {/each}
+    </ul>
   </div>
   <div class="card__row">
     <h3 class="card__title">Рабочее время</h3>
@@ -99,6 +103,13 @@
 
     &__title {
       min-width: 200px;
+    }
+    &__buttons-list {
+      grid-column-gap: 0;
+      grid-row-gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+      width: 100%;
     }
   }
 </style>

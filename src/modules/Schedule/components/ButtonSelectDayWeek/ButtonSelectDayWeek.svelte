@@ -74,9 +74,7 @@
     border: 1px solid $color-rhythm;
     border-radius: 10px;
     @include transition();
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
+
     &__title {
       text-transform: uppercase;
     }
