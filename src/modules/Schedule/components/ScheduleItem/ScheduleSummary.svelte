@@ -47,7 +47,7 @@
   const generateSecondRow = () => {
     if (item.on && item.tm_fr && item.tm_to && !item.off_fr && !item.off_to) {
       let tempString = '';
-      item.on.forEach((e, i) => {
+      item.on.forEach((e:number, i:number) => {
         if (i === item.on.length - 1) {
           tempString += getDayWeek(e);
         } else {
@@ -61,7 +61,7 @@
     }
     if (item.on && item.tm_fr && item.tm_to && item.off_fr && item.off_to) {
       let tempString = '';
-      item.on.forEach((e, i) => {
+      item.on.forEach((e: number, i: number) => {
         if (i === item.on.length - 1) {
           tempString += getDayWeek(e);
         } else {
@@ -88,7 +88,7 @@
     }
     if (item.on && !item.tm_fr && !item.tm_to) {
       let tempString = '';
-      item.on.forEach((e, i) => {
+      item.on.forEach((e: number, i: number) => {
         if (i === item.on.length - 1) {
           tempString += getDayWeek(e);
         } else {
@@ -98,7 +98,7 @@
       return `${tempString} - полный день`;
     }
   };
-  const getDayWeek = (dayWeekNumber) => {
+  const getDayWeek = (dayWeekNumber: number) => {
     return (
       dayjs()
         .day(dayWeekNumber)
@@ -114,7 +114,7 @@
   const generateThirdRow = () => {
     if (item.off) {
       let tempString = '';
-      item.off.forEach((e, i) => {
+      item.off.forEach((e: number, i: number) => {
         if (i === item.off.length - 1) {
           tempString += getDayWeek(e);
         } else {
@@ -155,7 +155,7 @@
    * @param format - The format of the date.
    * @returns A boolean value.
    */
-  const checkingDates = (date1, date2, format) => {
+  const checkingDates = (date1: string, date2: string, format: string) => {
     return dayjs(date1).format(format) === dayjs(date2).format(format);
   };
 

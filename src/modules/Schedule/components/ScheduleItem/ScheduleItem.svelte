@@ -1,5 +1,5 @@
 <div class="card">
-  <ScheduleSummary item='{item}'/>
+  <ScheduleSummary item="{item}" />
   <div class="card__row">
     <h3 class="card__title">Дни недели</h3>
     {#each Array(7) as _, i}
@@ -66,22 +66,23 @@
   };
 
   /* The updateValue event handler from the ButtonSelectDayWeek component. */
-  const selectEventHandler = (item) => {
+  const selectEventHandler = (item: CustomEvent) => {
     console.log(item.detail);
   };
 
   /* The updateValue event handler from the InputTimeRange component. */
-  const breakTimeInputHandler = (data) => {
+  const breakTimeInputHandler = (data: CustomEvent) => {
     console.log({ itemId: item.id, breakTime: data.detail });
   };
 
   /* The updateValue event handler from the InputTimeRange component. */
-  const workTimeInputHandler = (data) => {
+  const workTimeInputHandler = (data: CustomEvent) => {
+    console.log(data);
     console.log({ itemId: item.id, workTime: data.detail });
   };
 
   /* Returns the name of the day of the week. */
-  const getDayWeek = (dayWeekNumber) => {
+  const getDayWeek = (dayWeekNumber: number) => {
     return dayjs().day(dayWeekNumber).locale('ru').format('dd');
   };
 </script>

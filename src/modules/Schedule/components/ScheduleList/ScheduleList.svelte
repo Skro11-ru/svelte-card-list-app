@@ -1,7 +1,7 @@
 <ul class="schedule-list">
-  {#each list as item}
+  {#each list as item (item.id)}
     <li class="schedule-list__item">
-      <ScheduleItem item="{item}" (item.id) />
+      <ScheduleItem item="{item}" />
     </li>
   {/each}
 </ul>

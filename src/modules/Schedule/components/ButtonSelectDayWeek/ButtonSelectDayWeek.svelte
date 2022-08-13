@@ -29,14 +29,14 @@
   </span>
 </button>
 
-<script lang="typescript">
+<script lang="ts">
   import { createEventDispatcher } from 'svelte';
   import { clickOutside } from '@/helpers/clickOutside';
   const dispatch = createEventDispatcher();
 
   //Props
   export let isWorkingDay: boolean | null = null;
-  export let dayWeek;
+  export let dayWeek: string;
 
   //Variables
   let selectionMode = false;
@@ -51,7 +51,7 @@
   /* A function that is called when the user presses one of the three buttons. 
   It sets the selectionMode to false and if the value is different from the current value, 
   it sets the new value and dispatches the event. */
-  const selectValue = (value) => {
+  const selectValue = (value: boolean | null) => {
     selectionMode = false;
     if (value !== isWorkingDay) {
       isWorkingDay = value;
