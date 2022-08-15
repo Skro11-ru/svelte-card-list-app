@@ -43,12 +43,21 @@ const localDB = [
 const schedule = writable([]);
 
 const scheduleStore = {
-  // subscribe to the cart store
   subscribe: schedule.subscribe,
-  // custom logic
-  addItem(newItem) {
+  // addItem(newItem) {
+  //   schedule.update((items) => {
+  //     return [...items, newItem];
+  //   });
+  // },
+  //todo:прописать методы store
+  editItem(id) {
     schedule.update((items) => {
-      return [...items, newItem];
+      return items.map((el) => {
+        if (el.id === id) {
+          return { ...el, off_fr: 9999 };
+        }
+        return el;
+      });
     });
   },
   async getSchedule() {

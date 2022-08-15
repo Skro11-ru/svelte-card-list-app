@@ -1,4 +1,6 @@
 <div class="card">
+  <!--  todo:удалить после реализации методов store-->
+  {item.off_fr}
   <ScheduleSummary item="{item}" />
   <div class="card__row">
     <h3 class="card__title">Дни недели</h3>
@@ -50,18 +52,20 @@
   import ButtonSelectDayWeek from '@/modules/Schedule/components/ButtonSelectDayWeek/ButtonSelectDayWeek.svelte';
   import dayjs from 'dayjs';
   import ScheduleSummary from '@/modules/Schedule/components/ScheduleItem/ScheduleSummary.svelte';
+  import scheduleStore from '@/modules/Schedule/store/ScheduleStore';
 
   //Props
   export let item;
 
   // Variables
   let breakCheck = item?.hasOwnProperty('off_fr');
+  let breakStartTime, breakEndTime, workStartTime, workEndTime;
 
-  const breakStartTime = item?.off_fr ? item?.off_fr : '0000';
-  const breakEndTime = item?.off_to ? item?.off_to : '0000';
-
-  const workStartTime = item?.tm_fr ? item?.tm_fr : '1000';
-  const workEndTime = item?.tm_to ? item?.tm_to : '1800';
+  $: scheduleStore,
+    (workStartTime = item?.tm_fr ? item?.tm_fr : '1000'),
+    (workEndTime = item?.tm_to ? item?.tm_to : '1800'),
+    (breakEndTime = item?.off_to ? item?.off_to : '0000'),
+    (breakStartTime = item?.off_fr ? item?.off_fr : '0000');
 
   // Functions
   /* It checks if the day is a business day. */
@@ -70,8 +74,9 @@
   };
 
   /* The updateValue event handler from the ButtonSelectDayWeek component. */
-  const selectEventHandler = (item: CustomEvent) => {
-    console.log(item.detail);
+  const selectEventHandler = async (event: CustomEvent) => {
+    console.log(event.detail);
+    scheduleStore.editItem(item.id);
   };
 
   /* The updateValue event handler from the InputTimeRange component. */
