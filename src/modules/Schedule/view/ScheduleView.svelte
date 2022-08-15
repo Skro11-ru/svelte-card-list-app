@@ -1,17 +1,16 @@
 <section class="schedule">
   <h1>Расписание</h1>
-  <ScheduleList list="{scheduleList}" />
+  <ScheduleList list="{$scheduleStore}" />
 </section>
 
 <script lang="ts">
   import { onMount } from 'svelte';
   import ScheduleList from '@/modules/Schedule/components/ScheduleList/ScheduleList.svelte';
-  import { ScheduleModule } from '@/modules/Schedule/services/ScheduleServices';
   import type { IScheduleItem } from '@/modules/Schedule/interfaces/ScheduleInterfaces';
+  import scheduleStore from '@/modules/Schedule/store/ScheduleStore';
 
   onMount(async () => {
-    const res = await ScheduleModule.getSchedule();
-    res ? (scheduleList = [...res]) : (scheduleList = [...localDB]);
+    await scheduleStore.getSchedule();
   });
 
   const localDB = [
